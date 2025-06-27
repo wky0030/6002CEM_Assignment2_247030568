@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.forsale.mini.mapper.SchoolMapper">
+
+    <select id="getAll" resultType="com.forsale.mini.dao.School">
+        select *
+        from school_t
+    </select>
+    <select id="getAllByKey" resultType="com.forsale.mini.dao.School">
+        select *
+        from school_t
+        where name like '%${keyword}%' or content like '%${keyword}%'
+           or content2 like '%${keyword}%' or content3 like '%${keyword}%' or des like '%${keyword}%'
+    </select>
+    <select id="getAllByUId" resultType="com.forsale.mini.dao.School">
+        select *
+        from school_t
+        where id in (select fid from save_t where uid = #{uid});
+    </select>
+
+    <select id="getById" resultType="com.forsale.mini.dao.School">
+        select *
+        from school_t
+        where id = #{id}
+    </select>
+
+    <insert id="add" parameterType="java.lang.Integer">
+        INSERT INTO save_t (uid, fid)
+        VALUES (#{uid}, #{fid});
+    </insert>
+    <delete id="deleteSave" parameterType="java.lang.Integer">
+        delete
+        from save_t
+        where uid = #{uid}
+          and fid = #{fid}
+    </delete>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from school_t
+        where id = #{id};
+    </delete>
+
+    <update id="updateById" parameterType="com.forsale.mini.dao.School">
+        update school_t
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="alias != null and alias != ''">
+                alias = #{alias},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                updateTime = #{updateTime},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="content2 != null and content2 != ''">
+                content2 = #{content2},
+            </if>
+            <if test="content3 != null and content3 != ''">
+                content3 = #{content3},
+            </if>
+            <if test="imgs != null and imgs != ''">
+                imgs = #{imgs},
+            </if>
+            <if test="des != null and des != ''">
+                des = #{des},
+            </if>
+            <if test="latitude != null and latitude != ''">
+                latitude = #{latitude},
+            </if>
+            <if test="longitude != null and longitude != ''">
+                longitude = #{longitude},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
+    <insert id="addMsg">
+        INSERT INTO msg_t (sid, rid, fid, des, createTime, name,rurl,surl)
+        VALUES (#{sid}, #{rid}, #{fid}, #{des}, #{createTime}, #{name}, #{rurl}, #{surl});
+    </insert>
+    <select id="getAllMsgByFid" resultType="com.forsale.mini.dao.Msg">
+        select *
+        from msg_t
+        where ((sid = #{sid} and rid = #{rid}) or (sid = #{rid} and rid = #{sid}) or ( #{sid} = 10)   )
+          and fid = #{fid}
+    </select>
+
+    <select id="getAllMsg" resultType="com.forsale.mini.dao.Msg">
+        select  *
+        from msg_t
+        where (sid = #{uid} or rid = #{uid})  ;
+    </select>
+    <delete id="deleteMsgById" parameterType="java.lang.Integer">
+        delete
+        from msg_t
+        where fid = #{fid} and ( (sid=#{sid} and rid=#{rid}) or ( sid=#{rid} and rid=#{sid} ) );
+    </delete>
+
+    <insert id="addSchool" parameterType="com.forsale.mini.dao.School">
+        INSERT INTO school_t (uid, name, alias, imgs, content, content2, content3, des, createTime,latitude,longitude)
+        VALUES (#{uid}, #{name}, #{alias}, #{imgs}, #{content}, #{content2}, #{content3}, #{des}, #{createTime}, #{latitude}, #{longitude});
+    </insert>
+
+
+    <select id="getAbout" resultType="String">
+        select  content
+        from system_info_t
+        where ( id = 10)  ;
+    </select>
+    <select id="getNews" resultType="String">
+        select  content
+        from news_t
+        where ( id = 10)  ;
+    </select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.forsale.mini.mapper.DeviceMapper">
+    <select id="getAll" resultType="com.forsale.mini.dao.Device">
+        select *
+        from device_t
+    </select>
+
+    <select id="getById" resultType="com.forsale.mini.dao.Device">
+        select * from device_t where deviceId = #{deviceId}
+    </select>
+
+    <insert id="add" parameterType="com.forsale.mini.dao.Device">
+        INSERT INTO device_t (deviceName, deviceId,lastTime,pwd)
+         VALUES (#{deviceName},#{deviceId},#{lastTime},#{pwd});
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from device_t
+        where id = #{id};
+    </delete>
+
+    <update id="updateById" parameterType="com.forsale.mini.dao.Device">
+        update device_t
+        <set>
+            <if test="deviceName != null and deviceName != ''">
+                deviceName = #{deviceName},
+            </if>
+            <if test="deviceId != null and deviceId != ''">
+                deviceId = #{deviceId},
+            </if>
+            <if test="lastTime != null and lastTime != ''">
+                lastTime = #{lastTime},
+            </if>
+            <if test="pwd != null and pwd != ''">
+                pwd = #{pwd},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>

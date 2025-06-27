@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.forsale.mini.mapper.CallTypeMapper">
+    <select id="getAll" resultType="com.forsale.mini.dao.CallType">
+        SELECT * FROM call_type_t limit #{pageNum},#{pageSize}
+    </select>
+    <select id="getCount" resultType="java.lang.Long">
+        select count(*) from call_type_t
+    </select>
+    <select id="getById" resultType="com.forsale.mini.dao.CallType">
+        select * from call_type_t where id = #{id}
+    </select>
+    <insert id="add" parameterType="com.forsale.mini.dao.CallType">
+        INSERT INTO call_type_t (callName)
+         VALUES (#{callName});
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from call_type_t
+        where id = #{id};
+    </delete>
+
+    <update id="updateById" parameterType="com.forsale.mini.dao.CallType">
+        update call_type_t
+        <set>
+            <if test="callName != null and callName != ''">
+                callName = #{callName},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>

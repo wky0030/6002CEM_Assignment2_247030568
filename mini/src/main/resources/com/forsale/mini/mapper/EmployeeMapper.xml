@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.forsale.mini.mapper.EmployeeMapper">
+    <select id="getAllEmployees" resultType="com.forsale.mini.dao.Employee">
+        select *
+        from employee_t
+    </select>
+
+    <select id="getEmployeeById" resultType="com.forsale.mini.dao.Employee">
+        select * from employee_t where id = #{id}
+    </select>
+    <select id="getEmployeeByImg" resultType="com.forsale.mini.dao.Employee">
+        select * from employee_t where img = #{img}
+    </select>
+
+    <insert id="addEmployee" parameterType="com.forsale.mini.dao.Employee">
+        INSERT INTO employee_t (username, password,img,phone,utype)
+         VALUES (#{username},#{password},#{img},#{phone},#{utype});
+    </insert>
+
+    <delete id="deleteEmployeeById" parameterType="java.lang.Integer">
+        delete
+        from employee_t
+        where id = #{id};
+    </delete>
+
+    <update id="updateEmployeeById" parameterType="com.forsale.mini.dao.Employee">
+        update employee_t
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="img != null and img != ''">
+                img = #{img},
+            </if>
+            <if test="utype != null and utype != ''">
+                utype = #{utype},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>

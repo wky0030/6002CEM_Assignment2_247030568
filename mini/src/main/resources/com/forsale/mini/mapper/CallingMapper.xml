@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.forsale.mini.mapper.CallingMapper">
+    <select id="getAll" resultType="com.forsale.mini.dao.Calling">
+        SELECT * FROM calling_t  order by callTime desc limit #{pageNum},#{pageSize}
+    </select>
+    <select id="getCount" resultType="java.lang.Long">
+        select count(*) from calling_t
+    </select>
+    <select id="getById" resultType="com.forsale.mini.dao.Calling">
+        select * from calling_t where id = #{id}
+    </select>
+    <select id="getLastByDeviceId" resultType="com.forsale.mini.dao.Calling">
+        select * from calling_t where deviceId = #{id} ORDER BY callTime DESC LIMIT 1
+    </select>
+    <insert id="add" parameterType="com.forsale.mini.dao.Calling">
+        INSERT INTO calling_t (deviceName, deviceId,callTime,answerTime,finishTime,typeId,typeName,des)
+         VALUES (#{deviceName},#{deviceId},#{callTime},#{answerTime},#{finishTime},#{typeId},#{typeName},#{des});
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from calling_t
+        where id = #{id};
+    </delete>
+
+    <update id="updateById" parameterType="com.forsale.mini.dao.Calling">
+        update calling_t
+        <set>
+            <if test="deviceName != null and deviceName != ''">
+                deviceName = #{deviceName},
+            </if>
+            <if test="deviceId != null and deviceId != ''">
+                deviceId = #{deviceId},
+            </if>
+            <if test="callTime != null and callTime != ''">
+                callTime = #{callTime},
+            </if>
+            <if test="answerTime != null and answerTime != ''">
+                answerTime = #{answerTime},
+            </if>
+            <if test="finishTime != null and finishTime != ''">
+                finishTime = #{finishTime},
+            </if>
+            <if test="des != null and des != ''">
+                des = #{des},
+            </if>
+        </set>
+        where 1=1 and id = #{id};
+    </update>
+</mapper>
