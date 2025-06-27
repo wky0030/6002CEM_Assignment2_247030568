@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="CoarseFineLocation">
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT"
+        tools:ignore="CoarseFineLocation" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.usb.host" android:required="false"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/b1"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".MyApplication"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:targetApi="31" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD6y9PlJadXfyJcanpYopVPvHDM3Jpwvmo"/>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="false"/>
+        <activity android:name=".activity.RegistActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".activity.ListActivity"/>
+        <activity android:name=".activity.LogActivity"/>
+        <activity android:name=".activity.ReSetPassWordActivity"/>
+        <activity android:name=".activity.ShopActivity"/>
+        <activity android:name=".activity.AddActivity"/>
+
+        <activity android:name=".activity.TalkActivity"/>
+        <activity android:name=".activity.MapActivity"/>
+
+        <service android:name=".service.Service1" android:process=":process1"/>
+        <receiver android:name=".service.Receiver1" android:process=":process1"/>
+        <service android:name=".service.Service2" android:process=":process2"/>
+        <receiver android:name=".service.Receiver2" android:process=":process2"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.sign.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+    </application>
+    <!-- 判断相机是否可用 -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+
+        <intent>
+            <action android:name="android.media.action.VIDEO_CAPTURE"/>
+        </intent>
+    </queries>
+</manifest>

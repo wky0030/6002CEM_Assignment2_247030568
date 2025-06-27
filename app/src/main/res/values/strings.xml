@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">VTC course</string>
+    <string name="userName">UserName</string>
+    <string name="password">PassWord</string>
+    <string name="inputName">Input UserName</string>
+    <string name="inputPhone">Input phone number</string>
+    <string name="inputPwd">Input your password</string>
+    <string name="inputPwd2">Input your password again</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="add">ADD</string>
+    <string name="namecanEmpty">name or password can not be empty</string>
+    <string name="selectPalce">*Select Place.</string>
+    <string name="selectDay">* Select Time.</string>
+    <string name="back">delete</string>
+    <string name="registerSuccess">register success.</string>
+    <string name="userNameExsit">Name has be register。</string>
+    <string name="userNamePwdErr">username or password is wrong。</string>
+    <string name="tishi">Tips</string>
+    <string name="bleNotOpen">BlueTooth not Open</string>
+    <string name="cancel">CANCEL</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="open">Open</string>
+    <string name="exit">EXIT</string>
+    <string name="deviceName">UserName</string>
+    <string name="setting">SETTINGS</string>
+    <string name="modify">MODIFY</string>
+    <string name="notOk">Contact Admin to Approve 。</string>
+    <string name="languge">Select Language</string>
+    <string name="reLogin">Account has been forbidden,contact administer to enable。</string>
+    <string name="reLoginOutDate">Login has out of time,relogin please。</string>
+    <string name="goodIsEmpty">This kind of type is none。</string>
+    <string name="vctlist">VTC list</string>
+</resources>

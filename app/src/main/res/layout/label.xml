@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/label"
+    android:layout_width="541px"
+    android:layout_height="541px"
+    android:background="@color/white"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/bText"
+        android:layout_marginTop="40px"
+        android:textSize="32px"
+        android:lineHeight="16px"
+        android:textStyle="bold"
+        android:text="Fresh Cut in Store"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/bText"
+        android:textSize="50px"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Mixed Melon"/>
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/bText"
+        android:gravity="center"
+        android:textSize="20px"
+        android:textStyle="bold"
+        android:text="Product in USA"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:paddingHorizontal="30px"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/bText"
+                android:textSize="70px"
+                android:textStyle="bold"
+                android:text="$1007.29"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/bText"
+                android:textStyle="bold"
+                android:layout_marginRight="10px"
+                android:textSize="20px"
+                android:text="Sell by 07/04/23"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bText"
+            android:textAlignment="viewEnd"
+            android:layout_marginTop="-4px"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="20px"
+            android:text="INEDENTS: Secddlass,Wetermeon,Haneydem,Secddlass,Wetermeon,Haneydem,Secddlass,Wetermeon, Haneydem,"/>
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15px"
+            android:textAlignment="textEnd"
+            android:textColor="@color/bText"
+            android:textStyle="bold"
+            android:textSize="20px"
+            android:text="NET WT.20 oz (567g)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="115px"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/bar"
+            android:src="@drawable/clear"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/bText"
+        android:textAlignment="center"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="-4px"
+        android:layout_marginRight="10px"
+        android:layout_marginBottom="10px"
+        android:textStyle="bold"
+        android:textSize="20px"
+        android:text="Yum food &amp; beverage LLC\n
+2335 Buttermilk Crossing, suite #321, \n
+Crescent Springs, KY 41017
+"/>
+
+</LinearLayout>
